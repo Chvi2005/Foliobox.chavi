@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filio.chavi — Chavindu Nirmal Portfolio</title>
+  <meta name="description" content="Portfolio of Chavindu Nirmal - Senior Software Engineer and UI/UX Architect crafting high-performance web applications.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 18 L64 32 L56 36 L72 26 L62 50 L78 34 L66 62 L50 82 L34 62 L22 34 L38 50 L28 26 L44 36 L36 32 Z' fill='%23ff4d15'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Preloader Screen -->
+  <div id="loader" class="loader-screen">
+    <div class="loader-content">
+      <svg class="loader-logo-emblem" viewBox="0 0 100 100" width="48" height="48">
+        <path d="M50 18 L64 32 L56 36 L72 26 L62 50 L78 34 L66 62 L50 82 L34 62 L22 34 L38 50 L28 26 L44 36 L36 32 Z" fill="#ff4d15"/>
+      </svg>
+      <div class="loader-text">Filio.chavi</div>
+      <div class="loader-bar-bg">
+        <div id="loader-bar" class="loader-bar"></div>
+      </div>
+      <div id="loader-percent" class="loader-percent">0%</div>
+    </div>
+  </div>
+
+  <!-- Background Canvas Scroll Engine (UNTOUCHED) -->
+  <div class="canvas-sticky-wrapper">
+    <canvas id="animation-canvas"></canvas>
+    <div class="canvas-overlay-gradient"></div>
+  </div>
+
+  <!-- Sticky Glass Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <svg class="nav-logo-icon" viewBox="0 0 100 100" width="28" height="28">
+          <path d="M50 18 L64 32 L56 36 L72 26 L62 50 L78 34 L66 62 L50 82 L34 62 L22 34 L38 50 L28 26 L44 36 L36 32 Z" fill="#ff4d15"/>
+        </svg>
+        <span class="logo-text">Filio.chavi</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#feedback" class="nav-link">Feedback</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn-cv" id="nav-show-cv-btn" title="Show CV">
+          <span class="btn-text">Show CV</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </button>
+        <a href="#footer" class="btn-touch" title="Contact">
+          <span class="btn-text">Contact</span>
+          <span class="btn-arrow">&rarr;</span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- VIEW 1: Main Scrollable Home Page -->
+  <main class="content-wrapper">
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="hero-content reveal-on-scroll">
+        <div class="hero-badge">
+          <span class="badge-dot"></span> Chavindu Nirmal — Available for Hire
+        </div>
+        <p class="hero-subtitle">HELLO WORLD, I AM A</p>
+        <h1 class="hero-title">
+          <span id="typewriter-text" class="typewriter-orange"></span><span class="typewriter-cursor">|</span>
+        </h1>
+        <p class="hero-description">
+          Engineered to build elegant, high-impact digital solutions. Bridging clean architecture with modern UI/UX principles to deliver seamless user experiences.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" id="hero-view-projects-btn">
+            <span>Explore Work</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </button>
+          <button class="btn-secondary" id="hero-show-cv-btn">
+            <span>Show Resume</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Strip -->
+      <div class="metrics-grid reveal-on-scroll">
+        <div class="metric-item">
+          <span class="metric-value">05+</span>
+          <span class="metric-label">Years Experience</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-value">40+</span>
+          <span class="metric-label">Projects Completed</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-value">15+</span>
+          <span class="metric-label">Awards & Certs</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-value">100%</span>
+          <span class="metric-label">Client Satisfaction</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="about-section">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-tag">WHO I AM</span>
+        <h2 class="section-title">About Me</h2>
+      </div>
+      
+      <div class="about-grid">
+        <div class="about-card-left reveal-on-scroll">
+          <div class="avatar-wrapper">
+            <div class="avatar-glow"></div>
+            <div class="avatar-img-placeholder">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#ff4d15" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="avatar-badge">Senior Developer</div>
+          </div>
+          <div class="avatar-info">
+            <h3>Chavindu Nirmal</h3>
+            <p>Software Engineer & Architect</p>
+          </div>
+        </div>
+
+        <div class="about-content-right reveal-on-scroll">
+          <h3 class="about-heading">Transforming Complex Code into Seamless User Experiences</h3>
+          <p class="about-bio">
+            I am a full-stack engineer and UI/UX expert with a passion for designing resilient frontend applications, robust backend services, and pixel-perfect design systems. My focus is on crafting fast, accessible, and intuitive software that solves real human problems.
+          </p>
+          <div class="about-highlights">
+            <div class="highlight-chip">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff4d15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Full-Stack Architecture
+            </div>
+            <div class="highlight-chip">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff4d15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              UI/UX & Design Systems
+            </div>
+            <div class="highlight-chip">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff4d15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Performance Optimization
+            </div>
+          </div>
+          <div class="about-actions">
+            <button class="btn-primary" id="about-show-cv-btn">
+              <span>Show CV</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Summary Section -->
+    <section id="projects" class="projects-section">
+      <div class="section-header-flex reveal-on-scroll">
+        <div>
+          <span class="section-tag">MY WORK</span>
+          <h2 class="section-title">Featured Projects</h2>
+        </div>
+        <button class="btn-secondary" id="view-all-projects-btn">
+          <span>View All Projects</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <div class="projects-grid" id="featured-projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card reveal-on-scroll" data-project-id="1">
+          <div class="card-img-wrapper">
+            <img src="./images/project1.png" alt="Cartora E-Commerce Application">
+            <div class="card-overlay">
+              <span class="btn-card-view">View Details &rarr;</span>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-tags">
+              <span class="tag">PHP</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Tailwind</span>
+            </div>
+            <h3 class="card-title">Cartora E-Commerce Application</h3>
+            <p class="card-desc">Next-generation e-commerce web application with futuristic product discovery and fast delivery.</p>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card reveal-on-scroll" data-project-id="2">
+          <div class="card-img-wrapper">
+            <img src="./images/project2.png" alt="CampusHub Campus Portal">
+            <div class="card-overlay">
+              <span class="btn-card-view">View Details &rarr;</span>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-tags">
+              <span class="tag">Java</span>
+              <span class="tag">HTML/CSS</span>
+              <span class="tag">Spring Boot</span>
+            </div>
+            <h3 class="card-title">CampusHub Campus Portal</h3>
+            <p class="card-desc">University administrative portal for monitoring metrics, events, system pipelines, and announcements.</p>
+          </div>
+        </div>
+
+
+        <!-- Project 3 -->
+        <div class="project-card reveal-on-scroll" data-project-id="3">
+          <div class="card-img-wrapper">
+            <img src="./images/card_product.png" alt="Aura Design System">
+            <div class="card-overlay">
+              <span class="btn-card-view">View Details &rarr;</span>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-tags">
+              <span class="tag">Figma</span>
+              <span class="tag">UI/UX</span>
+              <span class="tag">JS</span>
+            </div>
+            <h3 class="card-title">Aura Design System</h3>
+            <p class="card-desc">Comprehensive design token system and UI kit used across mobile & web applications.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements / Gallery Summary Section -->
+    <section id="gallery" class="gallery-summary-section">
+      <div class="section-header-flex reveal-on-scroll">
+        <div>
+          <span class="section-tag">MILESTONES</span>
+          <h2 class="section-title">Achievements & Gallery</h2>
+        </div>
+        <button class="btn-secondary" id="view-full-gallery-btn">
+          <span>View Full Gallery</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </button>
+      </div>
+
+      <div class="gallery-summary-grid" id="gallery-summary-grid">
+        <div class="gallery-card reveal-on-scroll" data-lightbox-src="./images/card_jacket.png" data-lightbox-title="Global Hackathon Winner 2025" data-lightbox-desc="First place award for innovative AI accessibility application.">
+          <div class="gallery-card-img">
+            <img src="./images/card_jacket.png" alt="Hackathon Award">
+            <div class="gallery-badge">Award</div>
+          </div>
+          <div class="gallery-card-body">
+            <h4>Global Hackathon Winner 2025</h4>
+            <p>1st Place — AI Innovation Award</p>
+          </div>
+        </div>
+
+        <div class="gallery-card reveal-on-scroll" data-lightbox-src="./images/card_headphones.png" data-lightbox-title="Tech Summit Keynote Speaker" data-lightbox-desc="Delivered keynote on building scalable modern web interfaces.">
+          <div class="gallery-card-img">
+            <img src="./images/card_headphones.png" alt="Tech Keynote">
+            <div class="gallery-badge">Event</div>
+          </div>
+          <div class="gallery-card-body">
+            <h4>Tech Summit Keynote Speaker</h4>
+            <p>Front-End Performance & UI Systems</p>
+          </div>
+        </div>
+
+        <div class="gallery-card reveal-on-scroll" data-lightbox-src="./images/card_product.png" data-lightbox-title="Senior Cloud Architect Certificate" data-lightbox-desc="Professional certification in enterprise system engineering.">
+          <div class="gallery-card-img">
+            <img src="./images/card_product.png" alt="Certification">
+            <div class="gallery-badge">Certificate</div>
+          </div>
+          <div class="gallery-card-body">
+            <h4>Senior Software Certification</h4>
+            <p>Full-Stack Systems & Architecture</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section: 3-Column Layout with Visible Progress Bars -->
+    <section id="skills" class="skills-section">
+      <div class="section-header text-center reveal-on-scroll">
+        <h2 class="skills-heading-title">Technologies I Master</h2>
+        <div class="title-underline"></div>
+      </div>
+
+      <div class="skills-3col-grid reveal-on-scroll">
+        <!-- Column 1 -->
+        <div class="skill-col">
+          <!-- HTML -->
+          <div class="skill-row-item">
+            <div class="skill-row-top">
+              <div class="skill-name-group">
+                <span class="skill-mini-icon html-color">HTML</span>
+                <span class="skill-item-name">HTML</span>
+              </div>
+              <span class="skill-item-percent">95%</span>
+            </div>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" data-progress="95%" style="width: 95%;"></div>
+            </div>
+          </div>
+
+          <!-- CSS -->
+          <div class="skill-row-item">
+            <div class="skill-row-top">
+              <div class="skill-name-group">
+                <span class="skill-mini-icon css-color">CSS</span>
+                <span class="skill-item-name">CSS</span>
+              </div>
+              <span class="skill-item-percent">95%</span>
+            </div>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" data-progress="95%" style="width: 95%;"></div>
+            </div>
+          </div>
+
+          <!-- JavaScript -->
+          <div class="skill-row-item">
+            <div class="skill-row-top">
+              <div class="skill-name-group">
+                <span class="skill-mini-icon js-color">JS</span>
+                <span class="skill-item-name">JavaScript</span>
+              </div>
+              <span class="skill-item-percent">90%</span>
+            </div>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" data-progress="90%" style="width: 90%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="skill-col">
+          <!-- React.js -->
+          <div class="skill-row-item">
+            <div class="skill-row-top">
+              <div class="skill-name-group">
+                <span class="skill-mini-icon react-color">React</span>
+                <span class="skill-item-name">React.js</span>
+              </div>
+              <span class="skill-item-percent">90%</span>
+            </div>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" data-progress="90%" style="width: 90%;"></div>
+            </div>
+          </div>
+
+          <!-- Next.js -->
+          <div class="skill-row-item">
+            <div class="skill-row-top">
+              <div class="skill-name-group">
+                <span class="skill-mini-icon next-color">N</span>
+                <span class="skill-item-name">Next.js</span>
+              </div>
+              <span class="skill-item-percent">90%</span>
+            </div>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" data-progress="90%" style="width: 90%;"></div>
+            </div>
+          </div>
+
+          <!-- TypeScript -->
+          <div class="skill-row-item">
+            <div class="skill-row-top">
+              <div class="skill-name-group">
+                <span class="skill-mini-icon ts-color">TS</span>
+                <span class="skill-item-name">TypeScript</span>
+              </div>
+              <span class="skill-item-percent">85%</span>
+            </div>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" data-progress="85%" style="width: 85%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="skill-col">
+          <!-- Node.js -->
+          <div class="skill-row-item">
+            <div class="skill-row-top">
+              <div class="skill-name-group">
+                <span class="skill-mini-icon node-color">Node</span>
+                <span class="skill-item-name">Node.js</span>
+              </div>
+              <span class="skill-item-percent">85%</span>
+            </div>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" data-progress="85%" style="width: 85%;"></div>
+            </div>
+          </div>
+
+          <!-- Tailwind CSS -->
+          <div class="skill-row-item">
+            <div class="skill-row-top">
+              <div class="skill-name-group">
+                <span class="skill-mini-icon tailwind-color">Tailwind</span>
+                <span class="skill-item-name">Tailwind CSS</span>
+              </div>
+              <span class="skill-item-percent">95%</span>
+            </div>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" data-progress="95%" style="width: 95%;"></div>
+            </div>
+          </div>
+
+          <!-- Git -->
+          <div class="skill-row-item">
+            <div class="skill-row-top">
+              <div class="skill-name-group">
+                <span class="skill-mini-icon git-color">Git</span>
+                <span class="skill-item-name">Git</span>
+              </div>
+              <span class="skill-item-percent">85%</span>
+            </div>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" data-progress="85%" style="width: 85%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feedback Section: Infinite Continuous Moving Marquee Carousel (No Green) -->
+    <section id="feedback" class="feedback-section">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-tag">TESTIMONIALS</span>
+        <h2 class="section-title">Client Feedback</h2>
+      </div>
+
+      <div class="infinite-carousel-container reveal-on-scroll">
+        <div class="infinite-carousel-track" id="infinite-carousel-track">
+          <!-- Card 1 -->
+          <div class="feedback-card-v4">
+            <p class="v4-quote">"Super crisp quality items. Customer support helped me immediately when I had a query. Highly recommended platform."</p>
+            <div class="v4-author-box">
+              <div class="v4-avatar">
+                <img src="./images/card_jacket.png" alt="Sarah M.">
+              </div>
+              <div>
+                <div class="v4-name">Sarah M.</div>
+                <div class="v4-role">Verified Client</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 (Active Highlighted Center Card) -->
+          <div class="feedback-card-v4 active-highlight">
+            <p class="v4-quote">"Fastest delivery I have ever experienced. The packaging was eco-friendly and the product was exactly as described."</p>
+            <div class="v4-author-box">
+              <div class="v4-avatar">
+                <img src="./images/card_headphones.png" alt="Michael T.">
+              </div>
+              <div>
+                <div class="v4-name">Michael T.</div>
+                <div class="v4-role">Verified Client</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="feedback-card-v4">
+            <p class="v4-quote">"I love the product variations and the smooth checkout process. Best e-commerce site I've used lately."</p>
+            <div class="v4-author-box">
+              <div class="v4-avatar">
+                <img src="./images/card_product.png" alt="Emma W.">
+              </div>
+              <div>
+                <div class="v4-name">Emma W.</div>
+                <div class="v4-role">Verified Client</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Duplicate Set for Smooth Continuous Loop -->
+          <div class="feedback-card-v4">
+            <p class="v4-quote">"Super crisp quality items. Customer support helped me immediately when I had a query. Highly recommended platform."</p>
+            <div class="v4-author-box">
+              <div class="v4-avatar">
+                <img src="./images/card_jacket.png" alt="Sarah M.">
+              </div>
+              <div>
+                <div class="v4-name">Sarah M.</div>
+                <div class="v4-role">Verified Client</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feedback-card-v4 active-highlight">
+            <p class="v4-quote">"Fastest delivery I have ever experienced. The packaging was eco-friendly and the product was exactly as described."</p>
+            <div class="v4-author-box">
+              <div class="v4-avatar">
+                <img src="./images/card_headphones.png" alt="Michael T.">
+              </div>
+              <div>
+                <div class="v4-name">Michael T.</div>
+                <div class="v4-role">Verified Client</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feedback-card-v4">
+            <p class="v4-quote">"I love the product variations and the smooth checkout process. Best e-commerce site I've used lately."</p>
+            <div class="v4-author-box">
+              <div class="v4-avatar">
+                <img src="./images/card_product.png" alt="Emma W.">
+              </div>
+              <div>
+                <div class="v4-name">Emma W.</div>
+                <div class="v4-role">Verified Client</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="add-feedback-trigger-center reveal-on-scroll">
+        <button class="btn-primary" id="open-feedback-form-btn">
+          <span>Add Your Feedback</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- Footer Section -->
+    <footer id="footer" class="footer-glass">
+      <div class="footer-container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="#" class="logo">
+              <svg class="nav-logo-icon" viewBox="0 0 100 100" width="28" height="28">
+                <path d="M50 18 L64 32 L56 36 L72 26 L62 50 L78 34 L66 62 L50 82 L34 62 L22 34 L38 50 L28 26 L44 36 L36 32 Z" fill="#ff4d15"/>
+              </svg>
+              <span class="logo-text">Filio.chavi</span>
+            </a>
+            <p class="footer-tagline">Architecting modern web applications & memorable digital experiences.</p>
+            <div class="footer-contact-info">
+              <div class="contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff4d15" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>+1 (555) 019-2834</span>
+              </div>
+            </div>
+            
+            <!-- Updated Social Icons -->
+            <div class="social-links">
+              <a href="https://github.com" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener" class="social-icon" aria-label="YouTube">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-newsletter">
+            <h4 class="newsletter-title">Stay Connected</h4>
+            <p class="newsletter-desc">Subscribe to receive project updates and development insights.</p>
+            <form id="footer-newsletter-form" class="newsletter-form">
+              <input type="email" id="footer-email-input" placeholder="Enter your email..." required>
+              <button type="submit" class="btn-primary">
+                <span>Submit</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copyright">&copy; 2026 Chavindu Nirmal (Filio.chavi). All rights reserved.</p>
+          <a href="#hero" class="back-to-top">
+            <span>Back to top</span>
+            <span class="top-arrow">&uarr;</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- VIEW 2: CV / Resume Modal -->
+  <div id="cv-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="modal-card modal-large glass-panel">
+      <div class="modal-header">
+        <h3 class="modal-title">Curriculum Vitae / Resume</h3>
+        <button class="modal-close-btn" data-close-modal="cv-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body cv-body">
+        <div class="cv-header-block">
+          <h2>Chavindu Nirmal — Senior Software Engineer</h2>
+          <p class="cv-contact">Email: dev@filiochavi.com | Phone: +1 (555) 019-2834 | Location: San Francisco, CA</p>
+        </div>
+
+        <div class="cv-section">
+          <h4 class="cv-sec-title">Professional Summary</h4>
+          <p>Results-driven Full-Stack Engineer with 5+ years of experience engineering scalable web applications, designing enterprise UI components, and optimizing database backends using PHP, Java, and JavaScript.</p>
+        </div>
+
+        <div class="cv-section">
+          <h4 class="cv-sec-title">Experience</h4>
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <strong>Lead Full-Stack Developer — TechCorp Systems</strong>
+              <span>2023 – Present</span>
+            </div>
+            <p>Architected high-throughput microservices using Java & PHP. Spearheaded frontend redesign boosting overall page performance by 40%.</p>
+          </div>
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <strong>Senior UI/UX & Frontend Engineer — HypeStudio</strong>
+              <span>2021 – 2023</span>
+            </div>
+            <p>Created component design systems in Figma and implemented interactive web applications using JavaScript and CSS3.</p>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <h4 class="cv-sec-title">Education & Skills</h4>
+          <p><strong>B.S. in Computer Science</strong> — State Tech University</p>
+          <p><strong>Core Tech:</strong> PHP, JavaScript, Java, HTML5, CSS3, UI/UX, Figma, SQL, Git.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" id="download-cv-pdf-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          <span>Download PDF</span>
+        </button>
+        <button class="btn-secondary" data-close-modal="cv-modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW 3: All Projects Modal with Direct Project Link Buttons (Image 5) -->
+  <div id="all-projects-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="modal-card modal-large glass-panel">
+      <div class="modal-header">
+        <h3 class="modal-title">All Portfolio Projects</h3>
+        <button class="modal-close-btn" data-close-modal="all-projects-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="projects-filter-tabs">
+          <button class="filter-tab active" data-filter="all">All Projects</button>
+          <button class="filter-tab" data-filter="web">Web Apps</button>
+          <button class="filter-tab" data-filter="uiux">UI/UX & Figma</button>
+          <button class="filter-tab" data-filter="backend">Backend & Java</button>
+        </div>
+
+        <div class="all-projects-grid" id="all-projects-grid">
+          <!-- Card 1 -->
+          <div class="project-card card-v5" data-category="web" data-project-id="1">
+            <div class="card-img-wrapper">
+              <img src="./images/project1.png" alt="Cartora E-Commerce Application">
+            </div>
+            <div class="card-content">
+              <div class="card-tags"><span class="tag">PHP</span><span class="tag">JS</span><span class="tag">Tailwind</span></div>
+              <h3 class="card-title">Cartora E-Commerce Application</h3>
+              <p class="card-desc">Next-generation e-commerce web application.</p>
+              <div class="card-action-bar">
+                <a href="https://example.com/cartora-demo" target="_blank" class="btn-project-link" onclick="event.stopPropagation();">
+                  <span>Visit Website</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="project-card card-v5" data-category="backend" data-project-id="2">
+            <div class="card-img-wrapper">
+              <img src="./images/project2.png" alt="CampusHub Campus Portal">
+            </div>
+            <div class="card-content">
+              <div class="card-tags"><span class="tag">Java</span><span class="tag">HTML/CSS</span><span class="tag">Spring Boot</span></div>
+              <h3 class="card-title">CampusHub Campus Portal</h3>
+              <p class="card-desc">University administrative campus portal.</p>
+              <div class="card-action-bar">
+                <a href="https://example.com/campushub-portal" target="_blank" class="btn-project-link" onclick="event.stopPropagation();">
+                  <span>Visit Website</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Card 3 -->
+          <div class="project-card card-v5" data-category="uiux" data-project-id="3">
+            <div class="card-img-wrapper">
+              <img src="./images/card_product.png" alt="Aura Design System">
+            </div>
+            <div class="card-content">
+              <div class="card-tags"><span class="tag">Figma</span><span class="tag">UI/UX</span></div>
+              <h3 class="card-title">Aura Design System</h3>
+              <p class="card-desc">Comprehensive token system and UI kit.</p>
+              <div class="card-action-bar">
+                <a href="https://example.com/aura-system" target="_blank" class="btn-project-link" onclick="event.stopPropagation();">
+                  <span>Visit Website</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="project-card card-v5" data-category="web" data-project-id="4">
+            <div class="card-img-wrapper">
+              <img src="./images/card_jacket.png" alt="Cloud Portal">
+            </div>
+            <div class="card-content">
+              <div class="card-tags"><span class="tag">PHP</span><span class="tag">HTML/CSS</span></div>
+              <h3 class="card-title">Cloud Infrastructure Portal</h3>
+              <p class="card-desc">Server management and resource monitoring tool.</p>
+              <div class="card-action-bar">
+                <a href="https://example.com/cloud-portal" target="_blank" class="btn-project-link" onclick="event.stopPropagation();">
+                  <span>Visit Website</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="project-card card-v5" data-category="backend" data-project-id="5">
+            <div class="card-img-wrapper">
+              <img src="./images/card_headphones.png" alt="Fintech Gateway">
+            </div>
+            <div class="card-content">
+              <div class="card-tags"><span class="tag">Java</span><span class="tag">JS</span></div>
+              <h3 class="card-title">Fintech Payment Gateway</h3>
+              <p class="card-desc">Secure microservice for payment orchestration.</p>
+              <div class="card-action-bar">
+                <a href="https://example.com/fintech-pay" target="_blank" class="btn-project-link" onclick="event.stopPropagation();">
+                  <span>Visit Website</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="project-card card-v5" data-category="uiux" data-project-id="6">
+            <div class="card-img-wrapper">
+              <img src="./images/card_product.png" alt="Mobile Banking App">
+            </div>
+            <div class="card-content">
+              <div class="card-tags"><span class="tag">Figma</span><span class="tag">UI/UX</span></div>
+              <h3 class="card-title">Neobank Mobile UI</h3>
+              <p class="card-desc">Next-gen banking experience designed for iOS & Android.</p>
+              <div class="card-action-bar">
+                <a href="https://example.com/neobank-app" target="_blank" class="btn-project-link" onclick="event.stopPropagation();">
+                  <span>Visit Website</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" data-close-modal="all-projects-modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW 4: Single Project Detail View Modal -->
+  <div id="project-detail-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="modal-card modal-large glass-panel">
+      <div class="modal-header">
+        <h3 class="modal-title" id="detail-project-title">Project Details</h3>
+        <button class="modal-close-btn" data-close-modal="project-detail-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="detail-img-box">
+          <img id="detail-project-img" src="./images/card_jacket.png" alt="Project Screenshot">
+        </div>
+        <div class="detail-content-box">
+          <h4>About the Project</h4>
+          <p id="detail-project-desc">Detailed breakdown of the selected project engineering and architecture.</p>
+          
+          <h4 class="mt-4">Tech Stack Used</h4>
+          <div id="detail-project-stack" class="detail-tags-grid">
+            <span class="tag">PHP</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">CSS3</span>
+          </div>
+
+          <div class="detail-links-group mt-4">
+            <a id="detail-live-link" href="https://example.com" target="_blank" class="btn-primary">
+              <span>Live Demo</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+            </a>
+            <a id="detail-github-link" href="https://github.com" target="_blank" class="btn-secondary">
+              <span>GitHub Repo</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" data-close-modal="project-detail-modal">Back to Projects</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW 5: Achievements & Full Gallery Modal -->
+  <div id="gallery-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="modal-card modal-large glass-panel">
+      <div class="modal-header">
+        <h3 class="modal-title">Full Achievements & Media Gallery</h3>
+        <button class="modal-close-btn" data-close-modal="gallery-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="masonry-gallery-grid" id="full-gallery-grid">
+          <!-- Gallery Item 1 -->
+          <div class="masonry-item" data-lightbox-src="./images/card_jacket.png" data-lightbox-title="Global Hackathon 1st Place" data-lightbox-desc="Pioneered AI-driven UI generator.">
+            <img src="./images/card_jacket.png" alt="Award 1">
+            <div class="masonry-overlay">
+              <span class="masonry-title">Global Hackathon 1st Place</span>
+              <span class="masonry-sub">Award</span>
+            </div>
+          </div>
+
+          <!-- Gallery Item 2 -->
+          <div class="masonry-item" data-lightbox-src="./images/card_headphones.png" data-lightbox-title="International Tech Conference Speaker" data-lightbox-desc="Keynote speaker at San Francisco Frontend Summit.">
+            <img src="./images/card_headphones.png" alt="Event 1">
+            <div class="masonry-overlay">
+              <span class="masonry-title">Tech Summit Speaker</span>
+              <span class="masonry-sub">Event</span>
+            </div>
+          </div>
+
+          <!-- Gallery Item 3 -->
+          <div class="masonry-item" data-lightbox-src="./images/card_product.png" data-lightbox-title="Full Stack System Architect Cert" data-lightbox-desc="Enterprise Cloud Architecture Certification.">
+            <img src="./images/card_product.png" alt="Cert 1">
+            <div class="masonry-overlay">
+              <span class="masonry-title">System Architect Cert</span>
+              <span class="masonry-sub">Certificate</span>
+            </div>
+          </div>
+
+          <!-- Gallery Item 4 -->
+          <div class="masonry-item" data-lightbox-src="./images/card_jacket.png" data-lightbox-title="Best UI/UX Design Award" data-lightbox-desc="Recognized for outstanding digital accessibility.">
+            <img src="./images/card_jacket.png" alt="Award 2">
+            <div class="masonry-overlay">
+              <span class="masonry-title">Best UI/UX Design</span>
+              <span class="masonry-sub">Award</span>
+            </div>
+          </div>
+
+          <!-- Gallery Item 5 -->
+          <div class="masonry-item" data-lightbox-src="./images/card_headphones.png" data-lightbox-title="Code Workshop Workshop Host" data-lightbox-desc="Trained 200+ developers in modern CSS animations.">
+            <img src="./images/card_headphones.png" alt="Event 2">
+            <div class="masonry-overlay">
+              <span class="masonry-title">CSS Workshop Host</span>
+              <span class="masonry-sub">Event</span>
+            </div>
+          </div>
+
+          <!-- Gallery Item 6 -->
+          <div class="masonry-item" data-lightbox-src="./images/card_product.png" data-lightbox-title="Advanced Security Engineering" data-lightbox-desc="Certified in web app vulnerability assessment.">
+            <img src="./images/card_product.png" alt="Cert 2">
+            <div class="masonry-overlay">
+              <span class="masonry-title">Security Engineering</span>
+              <span class="masonry-sub">Certificate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" data-close-modal="gallery-modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW 6: Add Feedback Form Modal -->
+  <div id="feedback-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="modal-card glass-panel">
+      <div class="modal-header">
+        <h3 class="modal-title">Share Your Feedback</h3>
+        <button class="modal-close-btn" data-close-modal="feedback-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="add-feedback-form" class="feedback-form">
+          <div class="form-group">
+            <label for="feedback-name">Your Full Name</label>
+            <input type="text" id="feedback-name" placeholder="e.g. Alex Johnson" required>
+          </div>
+          <div class="form-group">
+            <label for="feedback-email">Email Address</label>
+            <input type="email" id="feedback-email" placeholder="alex@company.com" required>
+          </div>
+          <div class="form-group">
+            <label for="feedback-role">Role / Company</label>
+            <input type="text" id="feedback-role" placeholder="e.g. Product Manager at Acme" required>
+          </div>
+          <div class="form-group">
+            <label for="feedback-message">Feedback Message</label>
+            <textarea id="feedback-message" rows="4" placeholder="Share your experience working together..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Rating</label>
+            <div class="rating-input-group" id="rating-stars">
+              <span class="star-btn active" data-rating="1">★</span>
+              <span class="star-btn active" data-rating="2">★</span>
+              <span class="star-btn active" data-rating="3">★</span>
+              <span class="star-btn active" data-rating="4">★</span>
+              <span class="star-btn active" data-rating="5">★</span>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary w-full">
+            <span>Send Feedback</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW 7: Success Message Popup -->
+  <div id="success-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="modal-card modal-small glass-panel text-center">
+      <div class="success-icon-wrapper">
+        <svg class="checkmark-icon" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10" stroke="#10b981" stroke-opacity="0.3"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </div>
+      <h3 class="success-title">Thank You!</h3>
+      <p class="success-desc">Your submission has been received successfully. I will get back to you shortly.</p>
+      <div class="modal-footer justify-center">
+        <button class="btn-primary" data-close-modal="success-modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW 8: Image Lightbox UI -->
+  <div id="lightbox-modal" class="lightbox-overlay hidden" aria-hidden="true">
+    <button class="lightbox-close-btn" id="lightbox-close-btn" aria-label="Close Lightbox">&times;</button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Zoomed view">
+      <div class="lightbox-caption">
+        <h4 id="lightbox-title">Image Title</h4>
+        <p id="lightbox-desc">Image Description</p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
+
+
+
