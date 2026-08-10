@@ -2,7 +2,7 @@
 const FRAME_COUNT = 144;
 const getFramePath = (index) => {
   const paddedIndex = String(index).padStart(3, '0');
-  return `/frames/ezgif-frame-${paddedIndex}.jpg`;
+  return `./frames/ezgif-frame-${paddedIndex}.jpg`;
 };
 
 // DOM Elements (Lazily & Safely Initialized)
