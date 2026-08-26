@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel — Filio.chavi Event Gallery Manager</title>
+  <meta name="description" content="Admin Panel to manage and upload event photos to Filio.chavi portfolio gallery.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 18 L64 32 L56 36 L72 26 L62 50 L78 34 L66 62 L50 82 L34 62 L22 34 L38 50 L28 26 L44 36 L36 32 Z' fill='%23ff4d15'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-page-body">
+  <!-- Background Canvas Overlay -->
+  <div class="canvas-sticky-wrapper">
+    <canvas id="animation-canvas"></canvas>
+    <div class="canvas-overlay-gradient"></div>
+  </div>
+
+  <!-- Sticky Glass Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="./index.html" class="logo">
+        <svg class="nav-logo-icon" viewBox="0 0 100 100" width="28" height="28">
+          <path d="M50 18 L64 32 L56 36 L72 26 L62 50 L78 34 L66 62 L50 82 L34 62 L22 34 L38 50 L28 26 L44 36 L36 32 Z" fill="#ff4d15"/>
+        </svg>
+        <span class="logo-text">Filio.chavi</span>
+      </a>
+      <nav class="nav-links">
+        <a href="./index.html" class="nav-link">Home</a>
+        <a href="./index.html#projects" class="nav-link">Projects</a>
+        <a href="./index.html#gallery" class="nav-link">Gallery</a>
+        <a href="./admin.html" class="nav-link active">Admin Panel</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="./index.html" class="btn-primary btn-sm">
+          <span>&larr; Back to Portfolio</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Admin Main Container -->
+  <main class="content-wrapper admin-main-wrapper">
+    <div class="admin-container">
+      <div class="admin-glass-card glass-panel">
+        <div class="admin-card-header">
+          <div class="admin-header-title-group">
+            <span class="section-tag">ADMIN DASHBOARD</span>
+            <h1 class="admin-heading">Gallery Event Manager</h1>
+            <p class="admin-subheading">Upload new event photos and manage existing gallery milestones on the home page.</p>
+          </div>
+          <a href="./index.html#gallery" class="btn-secondary btn-sm" target="_blank">
+            <span>View Live Gallery</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+
+        <div class="admin-card-body">
+          <div class="admin-grid-layout">
+            <!-- Left Side: Upload Form -->
+            <div class="admin-form-col">
+              <div class="admin-form-card">
+                <h3 class="cv-sec-title">Upload New Event Photo</h3>
+
+                <form id="admin-upload-form" class="feedback-form">
+                  <div class="form-group">
+                    <label>Select Photo File or Drop Image Here</label>
+                    <div class="dropzone-area" id="admin-dropzone">
+                      <input type="file" id="admin-file-input" accept="image/*" class="file-input-hidden">
+                      <div class="dropzone-placeholder" id="admin-dropzone-placeholder">
+                        <div class="dropzone-icon">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff4d15" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                        </div>
+                        <p class="dropzone-text"><strong>Click to browse</strong> or drag & drop image file</p>
+                        <p class="dropzone-sub">PNG, JPG, WEBP, SVG supported</p>
+                      </div>
+                      <div class="upload-preview-container hidden" id="admin-preview-container">
+                        <img id="admin-preview-img" class="upload-preview-img" src="" alt="Preview">
+                        <button type="button" id="admin-remove-preview-btn" class="btn-remove-preview" title="Remove Image">&times;</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="admin-image-url">Or Image URL (Optional)</label>
+                    <input type="url" id="admin-image-url" placeholder="https://example.com/photo.jpg">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="admin-photo-title">Event / Photo Title</label>
+                    <input type="text" id="admin-photo-title" placeholder="e.g. Java Institute Symposium 2026" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="admin-photo-category">Category</label>
+                    <select id="admin-photo-category" class="custom-select" required>
+                      <option value="Event" selected>Event</option>
+                      <option value="Milestone">Milestone</option>
+                      <option value="Project">Project</option>
+                      <option value="Award">Award</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="admin-photo-desc">Short Description</label>
+                    <textarea id="admin-photo-desc" rows="3" placeholder="Brief summary of the event or milestone..." required></textarea>
+                  </div>
+
+                  <button type="submit" class="btn-primary w-full">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                    <span>Publish Photo to Gallery</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Right Side: Existing Photo List -->
+            <div class="admin-list-col">
+              <div class="admin-list-card">
+                <div class="admin-list-header">
+                  <h3 class="cv-sec-title">Uploaded Gallery Photos (<span id="admin-uploaded-count">0</span>)</h3>
+                  <button id="admin-clear-all-btn" class="btn-secondary btn-sm text-danger" style="display:none;">Clear Custom Photos</button>
+                </div>
+
+                <div id="admin-uploaded-items-list" class="admin-items-grid">
+                  <!-- Dynamically populated -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Success Notification Toast -->
+  <div id="admin-toast" class="admin-toast hidden">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+    <span id="admin-toast-text">Photo added successfully!</span>
+  </div>
+
+  <script type="module" src="./admin.js"></script>
+</body>
+</html>
