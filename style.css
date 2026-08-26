@@ -123,27 +123,29 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
   background-color: var(--bg-color);
+  touch-action: none;
 }
 
 #animation-canvas {
   display: block;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
-/* Dark Vignette Overlay */
+/* Subtle Vertical Overlay Gradient for Text Readability without Side Shading */
 .canvas-overlay-gradient {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(7, 7, 9, 0.2) 0%, rgba(7, 7, 9, 0.85) 100%),
-              linear-gradient(180deg, rgba(7, 7, 9, 0.75) 0%, rgba(7, 7, 9, 0.35) 50%, rgba(7, 7, 9, 0.95) 100%);
+  background: linear-gradient(180deg, rgba(7, 7, 9, 0.65) 0%, rgba(7, 7, 9, 0.15) 50%, rgba(7, 7, 9, 0.85) 100%);
   pointer-events: none;
 }
 
@@ -2120,5 +2122,253 @@ section {
     font-size: 0.8rem;
   }
 }
+
+/* ==========================================================================
+   GALLERY IMAGE UPLOAD SYSTEM STYLES
+   ========================================================================== */
+.section-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.modal-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.btn-sm {
+  padding: 6px 16px;
+  font-size: 0.82rem;
+}
+
+/* Interactive Inline Upload Card in Gallery Grid */
+.gallery-upload-trigger-card {
+  background: rgba(255, 77, 21, 0.04) !important;
+  border: 2px dashed rgba(255, 77, 21, 0.35) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.gallery-upload-trigger-card:hover {
+  background: rgba(255, 77, 21, 0.1) !important;
+  border-color: var(--accent-orange) !important;
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px var(--accent-glow);
+}
+
+.gallery-upload-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+  text-align: center;
+  gap: 10px;
+}
+
+.upload-icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 77, 21, 0.12);
+  border: 1px solid rgba(255, 77, 21, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.gallery-upload-trigger-card:hover .upload-icon-circle {
+  transform: scale(1.12);
+  background: var(--accent-orange);
+}
+
+.gallery-upload-trigger-card:hover .upload-icon-circle svg {
+  stroke: #ffffff;
+}
+
+.gallery-upload-card-content h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.gallery-upload-card-content p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Dropzone & Drag-and-Drop Area */
+.dropzone-area {
+  position: relative;
+  width: 100%;
+  min-height: 180px;
+  border: 2px dashed var(--glass-border);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.dropzone-area:hover, .dropzone-area.dragover {
+  border-color: var(--accent-orange);
+  background: rgba(255, 77, 21, 0.08);
+  box-shadow: inset 0 0 20px rgba(255, 77, 21, 0.15);
+}
+
+.file-input-hidden {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.dropzone-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.dropzone-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 77, 21, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.dropzone-text {
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.dropzone-text strong {
+  color: var(--accent-orange);
+}
+
+.dropzone-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Preview Image Area */
+.upload-preview-container {
+  position: relative;
+  width: 100%;
+  max-height: 220px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  z-index: 10;
+}
+
+.upload-preview-img {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.btn-remove-preview {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid var(--glass-border);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 15;
+  transition: background var(--transition-fast);
+}
+
+.btn-remove-preview:hover {
+  background: #ef4444;
+}
+
+/* Custom Select styling */
+.custom-select {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.custom-select option {
+  background: #121218;
+  color: #fff;
+}
+
+.custom-select:focus {
+  border-color: var(--accent-orange);
+}
+
+/* User Uploaded Card Overlay Badges & Delete Button */
+.btn-delete-uploaded {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.85);
+  color: #fff;
+  border: none;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  z-index: 20;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.gallery-card:hover .btn-delete-uploaded,
+.masonry-item:hover .btn-delete-uploaded {
+  opacity: 1;
+}
+
+.btn-delete-uploaded:hover {
+  transform: scale(1.15);
+  background: #dc2626;
+}
+
 
 

@@ -83,15 +83,15 @@ const PROJECTS_DB = {
     description: "Next-generation e-commerce web application engineered with a futuristic product discovery experience, curated collections, real-time cart orchestration, and lightning-fast checkout delivery.",
     stack: ["PHP", "JavaScript", "Tailwind CSS", "REST API"],
     live: "https://example.com/cartora-demo",
-    github: "https://github.com"
+    github: "https://github.com/Chvi2005"
   },
   "2": {
     title: "CampusHub Campus Portal",
     image: "./images/project2.png",
-    description: "Comprehensive university campus management portal for monitoring administrative metrics, registered events, operational system pipelines, and official administrative announcements.",
+    description: "Comprehensive Java Institute campus management portal for monitoring administrative metrics, registered events, operational system pipelines, and official administrative announcements.",
     stack: ["Java", "Spring Boot", "HTML5/CSS3", "JavaScript"],
     live: "https://example.com/campushub-portal",
-    github: "https://github.com"
+    github: "https://github.com/Chvi2005"
   },
   "3": {
     title: "Aura Design System",
@@ -99,7 +99,7 @@ const PROJECTS_DB = {
     description: "Comprehensive design token system and UI kit used across mobile & web applications for scalable interface building and cohesive visual branding.",
     stack: ["Figma", "UI/UX", "JavaScript", "Design Tokens", "CSS3"],
     live: "https://example.com/aura-system",
-    github: "https://github.com"
+    github: "https://github.com/Chvi2005"
   },
 
 
@@ -109,7 +109,7 @@ const PROJECTS_DB = {
     description: "Server management and resource monitoring tool for DevOps teams with real-time system diagnostics and automated alerting.",
     stack: ["PHP", "HTML/CSS", "JavaScript", "Linux", "Docker"],
     live: "https://example.com/cloud-portal",
-    github: "https://github.com"
+    github: "https://github.com/Chvi2005"
   },
   "5": {
     title: "Fintech Payment Gateway",
@@ -117,7 +117,7 @@ const PROJECTS_DB = {
     description: "Secure microservice for payment orchestration supporting multi-currency transactions and PCI-DSS compliance.",
     stack: ["Java", "JS", "REST API", "Microservices", "PostgreSQL"],
     live: "https://example.com/fintech-pay",
-    github: "https://github.com"
+    github: "https://github.com/Chvi2005"
   },
   "6": {
     title: "Neobank Mobile UI",
@@ -125,12 +125,12 @@ const PROJECTS_DB = {
     description: "Next-generation mobile banking experience designed for iOS & Android with sleek dark mode aesthetics.",
     stack: ["Figma", "UI/UX", "Mobile Design", "Prototyping"],
     live: "https://example.com/neobank-app",
-    github: "https://github.com"
+    github: "https://github.com/Chvi2005"
   }
 };
 
-// Draw canvas frame maintaining aspect ratio (object-fit: contain)
-function drawImageContain(img) {
+// Draw canvas frame using pure COVER mode (100% edge-to-edge, zero black margins)
+function drawImageCover(img) {
   if (!canvas) canvas = document.getElementById('animation-canvas');
   if (!canvas) return;
   if (!ctx) ctx = canvas.getContext('2d', { alpha: false });
@@ -143,39 +143,36 @@ function drawImageContain(img) {
   const imgWidth = img.naturalWidth;
   const imgHeight = img.naturalHeight;
   
-  const imgAspect = imgWidth / imgHeight;
-  const canvasAspect = canvasWidth / canvasHeight;
+  // Calculate scale factor for pure COVER mode across all screen sizes & aspect ratios
+  const scale = Math.max(canvasWidth / imgWidth, canvasHeight / imgHeight);
+  
+  const drawWidth = imgWidth * scale;
+  const drawHeight = imgHeight * scale;
+  
+  // Center frame on canvas
+  const drawX = (canvasWidth - drawWidth) / 2;
+  const drawY = (canvasHeight - drawHeight) / 2;
 
-  let drawWidth, drawHeight, drawX, drawY;
-
-  if (canvasAspect > imgAspect) {
-    drawHeight = canvasHeight;
-    drawWidth = canvasHeight * imgAspect;
-    drawX = (canvasWidth - drawWidth) / 2;
-    drawY = 0;
-  } else {
-    drawWidth = canvasWidth;
-    drawHeight = canvasWidth / imgAspect;
-    drawX = 0;
-    drawY = (canvasHeight - drawHeight) / 2;
-  }
-
-  // Dark background behind canvas image
+  // Dark background fill
   ctx.fillStyle = '#070709';
   ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
-  // Draw current image frame
+  // Draw current image frame spanning 100% of viewport with zero margins
   ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
 }
 
-// Handle Canvas Sizing and DPR
+// Handle Canvas Sizing and DPR (Mobile Optimized)
 function resizeCanvas() {
   if (!canvas) canvas = document.getElementById('animation-canvas');
   if (!canvas) return;
   if (!ctx) ctx = canvas.getContext('2d', { alpha: false });
   if (!ctx) return;
 
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const isMobile = window.innerWidth <= 768;
+  const dpr = isMobile
+    ? Math.min(window.devicePixelRatio || 1, 1.25)
+    : Math.min(window.devicePixelRatio || 1, 2);
+
   const width = window.innerWidth;
   const height = window.innerHeight;
 
@@ -183,47 +180,53 @@ function resizeCanvas() {
   canvas.height = height * dpr;
 
   ctx.imageSmoothingEnabled = true;
-  ctx.imageSmoothingQuality = 'high';
+  ctx.imageSmoothingQuality = isMobile ? 'medium' : 'high';
 
   const frameToRender = Math.min(FRAME_COUNT - 1, Math.max(0, Math.round(currentFrameIndex)));
   renderFrame(frameToRender, true);
 }
-
 
 // Render specified frame index
 function renderFrame(index, force = false) {
   if (!images[index]) return;
   if (!force && index === lastDrawnFrameIndex) return;
 
-  drawImageContain(images[index]);
+  drawImageCover(images[index]);
   lastDrawnFrameIndex = index;
 }
 
-// Map scroll position to frame index
+// Map scroll position to frame index (Mobile Friendly)
 function updateScrollTarget() {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-  const maxScroll = Math.max(
-    document.body.scrollHeight,
-    document.documentElement.scrollHeight
-  ) - window.innerHeight;
+  const scrollTop = Math.max(
+    window.pageYOffset || 0,
+    document.documentElement.scrollTop || 0,
+    document.body.scrollTop || 0
+  );
   
-  if (maxScroll <= 0) {
-    targetFrameIndex = 0;
-    return;
-  }
+  const docHeight = Math.max(
+    document.body.scrollHeight || 0,
+    document.documentElement.scrollHeight || 0,
+    document.body.offsetHeight || 0,
+    document.documentElement.offsetHeight || 0
+  );
+  
+  const winHeight = window.innerHeight || document.documentElement.clientHeight || 1;
+  const maxScroll = Math.max(1, docHeight - winHeight);
 
   const scrollFraction = Math.min(1, Math.max(0, scrollTop / maxScroll));
   targetFrameIndex = scrollFraction * (FRAME_COUNT - 1);
 }
 
-// Main Animation Loop with smooth Lerping
+// Main Animation Loop with smooth Lerping (Mobile Adaptive)
 function animationLoop() {
   if (isLoaded) {
     const diff = targetFrameIndex - currentFrameIndex;
+    const isMobile = window.innerWidth <= 768;
+    const lerpFactor = isMobile ? 0.16 : 0.08;
     
-    // Smooth lerp interpolation factor (0.08 for buttery cinematic feel)
-    if (Math.abs(diff) > 0.0005) {
-      currentFrameIndex += diff * 0.08;
+    // Smooth lerp interpolation
+    if (Math.abs(diff) > 0.0003) {
+      currentFrameIndex += diff * lerpFactor;
     } else {
       currentFrameIndex = targetFrameIndex;
     }
@@ -234,7 +237,6 @@ function animationLoop() {
 
   requestAnimationFrame(animationLoop);
 }
-
 
 // Active Nav Link Update on Scroll
 function updateActiveNavLink() {
@@ -263,7 +265,12 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 window.addEventListener('resize', resizeCanvas);
+window.addEventListener('orientationchange', () => {
+  setTimeout(resizeCanvas, 150);
+});
+window.addEventListener('touchstart', updateScrollTarget, { passive: true });
 window.addEventListener('touchmove', updateScrollTarget, { passive: true });
+window.addEventListener('touchend', updateScrollTarget, { passive: true });
 window.addEventListener('wheel', updateScrollTarget, { passive: true });
 
 // Initialize Engine
@@ -286,7 +293,7 @@ function initTypewriter() {
   const typewriterElement = document.getElementById('typewriter-text');
   if (!typewriterElement) return;
 
-  const words = ["Software Engineer", "UI/UX Designer", "Problem Solver"];
+  const words = ["Junior Developer", "UI/UX Specialist", "Full-Stack Engineer"];
   let wordIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
@@ -715,6 +722,11 @@ function bootApp() {
     if (loader) loader.classList.add('hidden');
     isLoaded = true;
   }, 1200);
+
+  // Clear any temporary gallery uploads from localStorage
+  try {
+    localStorage.removeItem('portfolio_uploaded_gallery_items');
+  } catch (e) {}
 
   // Window Event Listeners for Canvas
   window.addEventListener('resize', resizeCanvas);
