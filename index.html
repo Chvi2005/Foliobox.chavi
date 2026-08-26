@@ -48,13 +48,8 @@
         <a href="#gallery" class="nav-link">Gallery</a>
         <a href="#skills" class="nav-link">Skills</a>
         <a href="#feedback" class="nav-link">Feedback</a>
-        <a href="./admin.html" class="nav-link nav-admin-link" id="nav-admin-link">Admin Panel</a>
       </nav>
       <div class="nav-actions">
-        <a href="./admin.html" class="btn-cv" id="nav-admin-panel-btn" title="Admin Panel">
-          <span class="btn-text">Admin Panel</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-        </a>
         <button class="btn-cv" id="nav-show-cv-btn" title="Show CV">
           <span class="btn-text">Show CV</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -252,16 +247,10 @@
           <span class="section-tag">MILESTONES</span>
           <h2 class="section-title">Achievements & Gallery</h2>
         </div>
-        <div class="section-header-actions">
-          <a href="./admin.html" class="btn-primary btn-sm" id="gallery-open-admin-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-            <span>Add Event Photo</span>
-          </a>
-          <button class="btn-secondary" id="view-full-gallery-btn">
-            <span>View Full Gallery</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-          </button>
-        </div>
+        <button class="btn-secondary" id="view-full-gallery-btn">
+          <span>View Full Gallery</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </button>
       </div>
 
       <div class="gallery-summary-grid" id="gallery-summary-grid">
@@ -931,82 +920,6 @@
       <p class="success-desc">Your submission has been received successfully. I will get back to you shortly.</p>
       <div class="modal-footer justify-center">
         <button class="btn-primary" data-close-modal="success-modal">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- VIEW 9: Admin Panel Modal for Uploading Event Photos -->
-  <div id="admin-modal" class="modal-overlay hidden" aria-hidden="true">
-    <div class="modal-card modal-large glass-panel">
-      <div class="modal-header">
-        <div class="modal-title-group">
-          <h3 class="modal-title">Admin Panel — Gallery Event Manager</h3>
-        </div>
-        <button class="modal-close-btn" data-close-modal="admin-modal" aria-label="Close modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form id="admin-upload-form" class="feedback-form">
-          <h4 class="cv-sec-title">Upload New Event Photo</h4>
-
-          <div class="form-group">
-            <label>Select Photo File or Drop Image Here</label>
-            <div class="dropzone-area" id="admin-dropzone">
-              <input type="file" id="admin-file-input" accept="image/*" class="file-input-hidden">
-              <div class="dropzone-placeholder" id="admin-dropzone-placeholder">
-                <div class="dropzone-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff4d15" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-                </div>
-                <p class="dropzone-text"><strong>Click to browse</strong> or drag & drop image file</p>
-                <p class="dropzone-sub">PNG, JPG, WEBP, SVG supported</p>
-              </div>
-              <div class="upload-preview-container hidden" id="admin-preview-container">
-                <img id="admin-preview-img" class="upload-preview-img" src="" alt="Preview">
-                <button type="button" id="admin-remove-preview-btn" class="btn-remove-preview" title="Remove Image">&times;</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="admin-image-url">Or Image URL (Optional)</label>
-            <input type="url" id="admin-image-url" placeholder="https://example.com/photo.jpg">
-          </div>
-
-          <div class="form-group">
-            <label for="admin-photo-title">Event / Photo Title</label>
-            <input type="text" id="admin-photo-title" placeholder="e.g. Tech Symposium 2026" required>
-          </div>
-
-          <div class="form-group">
-            <label for="admin-photo-category">Category</label>
-            <select id="admin-photo-category" class="custom-select" required>
-              <option value="Event" selected>Event</option>
-              <option value="Milestone">Milestone</option>
-              <option value="Project">Project</option>
-              <option value="Award">Award</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="admin-photo-desc">Short Description</label>
-            <textarea id="admin-photo-desc" rows="3" placeholder="Brief summary of the event or milestone..." required></textarea>
-          </div>
-
-          <button type="submit" class="btn-primary w-full">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-            <span>Upload Photo to Gallery</span>
-          </button>
-        </form>
-
-        <!-- Manage Existing Uploads Section -->
-        <div class="admin-uploaded-list-section mt-4">
-          <h4 class="cv-sec-title">Uploaded Event Photos (<span id="admin-uploaded-count">0</span>)</h4>
-          <div id="admin-uploaded-items-list" class="masonry-gallery-grid mt-4">
-            <!-- Dynamically populated -->
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn-secondary" data-close-modal="admin-modal">Close</button>
       </div>
     </div>
   </div>
