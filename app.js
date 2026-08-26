@@ -398,6 +398,14 @@ function initModalHandlers() {
         openModal('admin-modal');
       });
     }
+
+  const navAdminLink = document.getElementById('nav-admin-link');
+  if (navAdminLink && adminModal) {
+    navAdminLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal('admin-modal');
+    });
+  }
   });
 
   // Triggers for View 2 (CV Modal)
