@@ -634,15 +634,30 @@ function initFormHandlers() {
     });
   });
 
+  // Sanitize helper to prevent XSS injection
+  function sanitizeHTML(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
   // Feedback Form Submit (View 6)
   const addFeedbackForm = document.getElementById('add-feedback-form');
   if (addFeedbackForm) {
     addFeedbackForm.addEventListener('submit', (e) => {
       e.preventDefault();
       
-      const name = document.getElementById('feedback-name').value;
-      const role = document.getElementById('feedback-role').value || 'Verified Client';
-      const message = document.getElementById('feedback-message').value;
+      const rawName = document.getElementById('feedback-name').value.trim();
+      const rawRole = document.getElementById('feedback-role').value.trim() || 'Verified Client';
+      const rawMessage = document.getElementById('feedback-message').value.trim();
+
+      const name = sanitizeHTML(rawName);
+      const role = sanitizeHTML(rawRole);
+      const message = sanitizeHTML(rawMessage);
 
       // Dynamically insert new feedback card into Feedback Row (Image 4 format)
       const feedbackRow = document.querySelector('.feedback-cards-row');
