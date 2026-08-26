@@ -389,25 +389,6 @@ function closeModal(modalId) {
 }
 
 function initModalHandlers() {
-  // Triggers for View 9 (Admin Panel Modal)
-  ['nav-admin-panel-btn', 'gallery-open-admin-btn'].forEach(id => {
-    const btn = document.getElementById(id);
-    if (btn) {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openModal('admin-modal');
-      });
-    }
-
-  const navAdminLink = document.getElementById('nav-admin-link');
-  if (navAdminLink && adminModal) {
-    navAdminLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      openModal('admin-modal');
-    });
-  }
-  });
-
   // Triggers for View 2 (CV Modal)
   ['nav-show-cv-btn', 'hero-show-cv-btn', 'about-show-cv-btn'].forEach(id => {
     const btn = document.getElementById(id);
